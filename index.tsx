@@ -1,11 +1,13 @@
+
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import './index.css';
 
 const container = document.getElementById('root');
 
 if (!container) {
-  throw new Error("Could not find root element to mount to");
+  throw new Error("Não foi possível encontrar o elemento root para montar a aplicação.");
 }
 
 const root = createRoot(container);

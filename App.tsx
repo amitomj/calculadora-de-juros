@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import DevaluationCalculator from './components/DevaluationCalculator';
 import InterestCalculator from './components/InterestCalculator';
 
@@ -7,12 +8,15 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<'day' | 'moon'>('day');
   const [mounted, setMounted] = useState(false);
 
-  // Previne erro de hidratação carregando o tema apenas após a montagem no cliente
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem('app-theme') as 'day' | 'moon';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
     if (saved) {
       setTheme(saved);
+    } else if (prefersDark) {
+      setTheme('moon');
     }
   }, []);
 
@@ -30,7 +34,7 @@ const App: React.FC = () => {
   const toggleTheme = () => setTheme(prev => prev === 'day' ? 'moon' : 'day');
 
   if (!mounted) {
-    return <div className="min-h-screen bg-slate-50 dark:bg-moon-bg"></div>;
+    return null; // Evita qualquer mismatch visual até o cliente estar pronto
   }
 
   return (
@@ -84,7 +88,7 @@ const App: React.FC = () => {
             Calculadora: {activeTab === 'interest' ? 'Juros de Mora' : 'Desvalorização Moeda'}
           </h2>
           <p className="text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl">
-            Ferramenta profissional para cálculos jurídicos precisos. Escolha o layout que melhor se adapta ao seu ambiente de trabalho.
+            Ferramenta profissional para cálculos jurídicos precisos de acordo com a lei portuguesa.
           </p>
         </div>
 
@@ -97,14 +101,14 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      <footer className="max-w-5xl mx-auto px-4 mt-16 pt-8 border-t border-slate-200 dark:border-moon-border text-slate-400 dark:text-slate-500 text-sm flex flex-col md:flex-row justify-between gap-4">
+      <footer className="max-w-5xl mx-auto px-4 mt-16 pt-8 border-t border-slate-200 dark:border-moon-border text-slate-400 dark:text-slate-500 text-sm flex flex-col md:flex-row justify-between gap-4 pb-10">
         <p>&copy; {new Date().getFullYear()} Calculadora Jurídica PT. Portugal • Suporte Legal.</p>
         <div className="flex gap-6">
           <span className="flex items-center gap-1.5 italic">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Sistema Online
           </span>
-          <span>Versão 1.1.2</span>
+          <span>Versão 1.2.0</span>
         </div>
       </footer>
     </div>

@@ -1,0 +1,16 @@
+
+@import "tailwindcss";
+
+@theme {
+  --color-moon-bg: #030712;
+  --color-moon-card: #111827;
+  --color-moon-border: #1f2937;
+  --color-moon-accent: #3b82f6;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-slate-50 text-slate-900 dark:bg-moon-bg dark:text-slate-100;
+    font-family: 'Inter', sans-serif;
+  }
+}
