@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { InterestType, Debt, CalculationResult } from '../types';
 import { calculateInterestForDebt } from '../services/calcService';
@@ -42,7 +41,7 @@ const InterestCalculator: React.FC = () => {
       {/* Config Section */}
       <div className="bg-white dark:bg-moon-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-moon-border">
         <div className="flex items-center gap-2 mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          <svg width="20" height="20" className="text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
           <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100">Parâmetros de Cálculo</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -51,7 +50,7 @@ const InterestCalculator: React.FC = () => {
             <select 
               value={interestType}
               onChange={(e) => setInterestType(e.target.value as InterestType)}
-              className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-moon-border rounded-xl bg-white outline-none focus:ring-2 focus:ring-blue-500 dark:text-white transition-all appearance-none cursor-pointer"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-moon-border rounded-xl outline-none focus:ring-2 focus:ring-blue-500 dark:text-white transition-all appearance-none cursor-pointer"
             >
               <option value={InterestType.CIVIL}>Juros Civis (4%)</option>
               <option value={InterestType.COMMERCIAL_3}>Comerciais (§3 Art. 102º C.C.)</option>
@@ -75,14 +74,14 @@ const InterestCalculator: React.FC = () => {
       <div className="bg-white dark:bg-moon-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-moon-border">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <svg width="20" height="20" className="text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100">Discriminação de Dívidas</h3>
           </div>
           <button 
             onClick={addDebt}
-            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95"
+            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95 cursor-pointer"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
             Adicionar Item
           </button>
         </div>
@@ -121,10 +120,10 @@ const InterestCalculator: React.FC = () => {
                   </div>
                   <button 
                     onClick={() => removeDebt(debt.id)}
-                    className="text-slate-400 hover:text-red-500 p-2 transition-colors"
+                    className="text-slate-400 hover:text-red-500 p-2 transition-colors cursor-pointer"
                     title="Remover"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                   </button>
                 </div>
               </div>
@@ -135,8 +134,6 @@ const InterestCalculator: React.FC = () => {
 
       {/* Summary Section */}
       <div className="bg-slate-900 dark:bg-blue-600 p-8 md:p-12 rounded-[2rem] shadow-2xl shadow-blue-500/20 text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent)]"></div>
-        
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 relative z-10">
           <div className="flex-1 space-y-6">
             <h4 className="text-blue-400 dark:text-blue-100 text-sm font-bold uppercase tracking-[0.3em]">Resumo Consolidado</h4>
@@ -162,9 +159,9 @@ const InterestCalculator: React.FC = () => {
             
             <button 
               onClick={() => exportToWord(results, interestType, finalDate)}
-              className="bg-white text-slate-900 dark:bg-moon-card dark:text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-xl mx-auto md:ml-auto"
+              className="bg-white text-slate-900 dark:bg-moon-card dark:text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-xl mx-auto md:ml-auto cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               GERAR RELATÓRIO WORD
             </button>
           </div>

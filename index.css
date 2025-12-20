@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cores do Tema Escuro */
   --color-moon-bg: #030712;
   --color-moon-card: #111827;
   --color-moon-border: #1f2937;
   --color-moon-accent: #3b82f6;
 
-  /* Keyframes para as animações de entrada */
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -18,24 +16,36 @@
   }
 }
 
-/* Ativar o modo escuro manual via classe .dark no Tailwind v4 */
+/* Configuração do modo escuro para v4 usando classe .dark */
 @variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  body {
-    @apply antialiased bg-slate-50 text-slate-900 transition-colors duration-300;
-    @apply dark:bg-moon-bg dark:text-slate-100;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  html {
-    overflow-y: scroll;
+  :root {
+    --app-bg: #f8fafc;
+    --app-text: #0f172a;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
   }
 
-  /* Garantir que SVGs não fiquem gigantes sem classes */
+  .dark {
+    --app-bg: #030712;
+    --app-text: #f1f5f9;
+    --card-bg: #111827;
+    --border-color: #1f2937;
+  }
+
+  body {
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    @apply antialiased transition-colors duration-300;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Impede que os ícones fiquem gigantes se as classes Tailwind demorarem a carregar */
   svg {
     display: inline-block;
     vertical-align: middle;
+    flex-shrink: 0;
   }
 }
 
