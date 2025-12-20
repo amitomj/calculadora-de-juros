@@ -1,16 +1,23 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import DevaluationCalculator from './components/DevaluationCalculator';
 import InterestCalculator from './components/InterestCalculator';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'devaluation' | 'interest'>('interest');
-  const [theme, setTheme] = useState<'day' | 'moon'>(() => {
-    const saved = localStorage.getItem('app-theme');
-    return (saved as 'day' | 'moon') || 'day';
-  });
+  const [theme, setTheme] = useState<'day' | 'moon'>('day');
+  const [mounted, setMounted] = useState(false);
+
+  // Previne erro de hidratação carregando o tema apenas após a montagem no cliente
+  useEffect(() => {
+    setMounted(true);
+    const saved = localStorage.getItem('app-theme') as 'day' | 'moon';
+    if (saved) {
+      setTheme(saved);
+    }
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     const root = window.document.documentElement;
     if (theme === 'moon') {
       root.classList.add('dark');
@@ -18,9 +25,13 @@ const App: React.FC = () => {
       root.classList.remove('dark');
     }
     localStorage.setItem('app-theme', theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => setTheme(prev => prev === 'day' ? 'moon' : 'day');
+
+  if (!mounted) {
+    return <div className="min-h-screen bg-slate-50 dark:bg-moon-bg"></div>;
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-moon-bg transition-colors duration-300 pb-20">
@@ -93,7 +104,7 @@ const App: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             Sistema Online
           </span>
-          <span>Versão 1.1.0</span>
+          <span>Versão 1.1.2</span>
         </div>
       </footer>
     </div>
