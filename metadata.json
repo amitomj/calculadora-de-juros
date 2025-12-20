@@ -1,0 +1,5 @@
+{
+  "name": "Calculadora Jurídica PT",
+  "description": "Aplicação para cálculo de coeficientes de desvalorização da moeda e juros de mora (comerciais, civis e públicos) de acordo com a legislação portuguesa.",
+  "requestFramePermissions": []
+}
