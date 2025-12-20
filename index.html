@@ -23,6 +23,7 @@
         }
       }
     </script>
+    <!-- Carregamento de fontes sem preloads agressivos para evitar avisos no Vercel -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -32,6 +33,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        /* Garantir que o scrollbar não cause saltos de layout */
         html { overflow-y: scroll; }
     </style>
 <script type="importmap">
