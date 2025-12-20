@@ -1,62 +1,44 @@
-@import "tailwindcss";
-
-@theme {
-  --color-moon-bg: #030712;
-  --color-moon-card: #111827;
-  --color-moon-border: #1f2937;
-  --color-moon-accent: #3b82f6;
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slide-in-bottom {
-    from { transform: translateY(1rem); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
+/* Reset e Animações Base */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Configuração do modo escuro para v4 usando classe .dark */
-@variant dark (&:where(.dark, .dark *));
-
-@layer base {
-  :root {
-    --app-bg: #f8fafc;
-    --app-text: #0f172a;
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
-  }
-
-  .dark {
-    --app-bg: #030712;
-    --app-text: #f1f5f9;
-    --card-bg: #111827;
-    --border-color: #1f2937;
-  }
-
-  body {
-    background-color: var(--app-bg);
-    color: var(--app-text);
-    @apply antialiased transition-colors duration-300;
-    font-family: 'Inter', sans-serif;
-  }
-
-  /* Impede que os ícones fiquem gigantes se as classes Tailwind demorarem a carregar */
-  svg {
-    display: inline-block;
-    vertical-align: middle;
-    flex-shrink: 0;
-  }
+@keyframes slide-in-bottom {
+  from { transform: translateY(1rem); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-@layer utilities {
-  .animate-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-  .fade-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-  .slide-in-from-bottom-4 {
-    animation: slide-in-bottom 0.5s ease-out forwards;
-  }
+.animate-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.slide-in-from-bottom-4 {
+  animation: slide-in-bottom 0.5s ease-out forwards;
+}
+
+/* Custom Scrollbar para Modo Escuro */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #030712;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Prevenção de elementos gigantes em carregamentos de SVG */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
 }

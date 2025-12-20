@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Jurídica PT</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Motor Tailwind para garantir que o layout funcione no AI Studio -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              moon: {
+                bg: '#030712',
+                card: '#111827',
+                border: '#1f2937',
+                accent: '#3b82f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Fallback de fontes e transições suaves */
+      body {
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      [v-cloak] { display: none; }
+    </style>
 <script type="importmap">
 {
   "imports": {
@@ -20,7 +47,7 @@
 }
 </script>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
