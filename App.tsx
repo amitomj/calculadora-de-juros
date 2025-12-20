@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import DevaluationCalculator from './components/DevaluationCalculator';
 import InterestCalculator from './components/InterestCalculator';
@@ -8,20 +7,20 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<'day' | 'moon'>('day');
   const [mounted, setMounted] = useState(false);
 
+  // Inicialização do tema baseada no localStorage ou preferência do sistema
   useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('app-theme') as 'day' | 'moon';
+    const saved = localStorage.getItem('app-theme') as 'day' | 'moon' | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = saved || (prefersDark ? 'moon' : 'day');
     
-    if (saved) {
-      setTheme(saved);
-    } else if (prefersDark) {
-      setTheme('moon');
-    }
+    setTheme(initialTheme);
+    setMounted(true);
   }, []);
 
+  // Sincronização do estado com o DOM
   useEffect(() => {
     if (!mounted) return;
+    
     const root = window.document.documentElement;
     if (theme === 'moon') {
       root.classList.add('dark');
@@ -31,10 +30,12 @@ const App: React.FC = () => {
     localStorage.setItem('app-theme', theme);
   }, [theme, mounted]);
 
-  const toggleTheme = () => setTheme(prev => prev === 'day' ? 'moon' : 'day');
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'day' ? 'moon' : 'day');
+  };
 
   if (!mounted) {
-    return null; // Evita qualquer mismatch visual até o cliente estar pronto
+    return <div className="min-h-screen bg-slate-50 dark:bg-moon-bg" />;
   }
 
   return (
@@ -55,13 +56,13 @@ const App: React.FC = () => {
             <nav className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
               <button 
                 onClick={() => setActiveTab('interest')}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'interest' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${activeTab === 'interest' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
               >
                 Juros de Mora
               </button>
               <button 
                 onClick={() => setActiveTab('devaluation')}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'devaluation' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${activeTab === 'devaluation' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
               >
                 Desvalorização
               </button>
@@ -69,7 +70,7 @@ const App: React.FC = () => {
 
             <button 
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-transparent dark:border-moon-border"
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-transparent dark:border-moon-border cursor-pointer flex items-center justify-center"
               aria-label="Alternar tema"
             >
               {theme === 'day' ? (
@@ -108,7 +109,7 @@ const App: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Sistema Online
           </span>
-          <span>Versão 1.2.0</span>
+          <span>Versão 1.2.7</span>
         </div>
       </footer>
     </div>

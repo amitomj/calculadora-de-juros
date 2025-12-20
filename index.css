@@ -1,16 +1,60 @@
-
 @import "tailwindcss";
 
 @theme {
+  /* Cores Customizadas para o Tema Moon */
   --color-moon-bg: #030712;
   --color-moon-card: #111827;
   --color-moon-border: #1f2937;
   --color-moon-accent: #3b82f6;
+
+  /* Animações */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-in-bottom: slide-in-bottom 0.5s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-in-bottom {
+    from { 
+      transform: translateY(1rem); 
+      opacity: 0; 
+    }
+    to { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+  }
 }
 
 @layer base {
+  *, ::after, ::before {
+    border-color: var(--color-slate-200);
+  }
+
+  :root.dark *, :root.dark ::after, :root.dark ::before {
+    border-color: var(--color-moon-border);
+  }
+
   body {
     @apply antialiased bg-slate-50 text-slate-900 dark:bg-moon-bg dark:text-slate-100;
     font-family: 'Inter', sans-serif;
+  }
+  
+  html {
+    overflow-y: scroll;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fade-in 0.5s ease-out;
+  }
+  .fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+  .slide-in-from-bottom-4 {
+    animation: slide-in-bottom 0.5s ease-out;
   }
 }
