@@ -5,11 +5,17 @@ import InterestCalculator from './components/InterestCalculator';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'devaluation' | 'interest'>('interest');
-  const [theme, setTheme] = useState<'day' | 'moon'>(() => {
-    const saved = localStorage.getItem('app-theme');
-    return (saved as 'day' | 'moon') || 'day';
-  });
+  const [theme, setTheme] = useState<'day' | 'moon'>('day'); // Inicializa sempre com 'day' para evitar mismatch
 
+  // Efeito para carregar o tema do localStorage após a montagem
+  useEffect(() => {
+    const saved = localStorage.getItem('app-theme') as 'day' | 'moon';
+    if (saved) {
+      setTheme(saved);
+    }
+  }, []);
+
+  // Efeito para aplicar as classes de CSS e salvar a preferência
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'moon') {
