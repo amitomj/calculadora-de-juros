@@ -21,19 +21,20 @@
   animation: slide-in-bottom 0.5s ease-out forwards;
 }
 
-/* Custom Scrollbar para Modo Escuro */
-.dark ::-webkit-scrollbar {
-  width: 8px;
+/* Ocultar Barras de Deslizamento */
+/* Chrome, Safari, Opera e Brave */
+*::-webkit-scrollbar {
+  display: none !important;
 }
-.dark ::-webkit-scrollbar-track {
-  background: #030712;
+
+/* Firefox */
+* {
+  scrollbar-width: none !important;
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 4px;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+
+/* IE e Edge */
+* {
+  -ms-overflow-style: none !important;
 }
 
 /* Prevenção de elementos gigantes em carregamentos de SVG */

@@ -1,4 +1,3 @@
-
 import { InterestType, InterestRate, DevaluationCoefficient } from './types';
 
 export const DEVALUATION_COEFFICIENTS: DevaluationCoefficient[] = [
@@ -101,15 +100,14 @@ export const INTEREST_RATES: Record<InterestType, InterestRate[]> = {
     { start: parsePtDate('01-07-2013'), end: parsePtDate('31-12-2013'), rate: 7.50 },
     { start: parsePtDate('01-01-2014'), end: parsePtDate('30-06-2014'), rate: 7.25 },
     { start: parsePtDate('01-07-2014'), end: parsePtDate('31-12-2014'), rate: 7.15 },
-    { start: parsePtDate('01-01-2015'), end: parsePtDate('31-12-2015'), rate: 7.05 },
-    { start: parsePtDate('01-01-2016'), end: parsePtDate('30-06-2016'), rate: 7.05 },
+    { start: parsePtDate('01-01-2015'), end: parsePtDate('30-06-2016'), rate: 7.05 },
     { start: parsePtDate('01-07-2016'), end: parsePtDate('31-12-2022'), rate: 7.00 },
     { start: parsePtDate('01-01-2023'), end: parsePtDate('30-06-2023'), rate: 9.50 },
     { start: parsePtDate('01-07-2023'), end: parsePtDate('31-12-2023'), rate: 11.00 },
     { start: parsePtDate('01-01-2024'), end: parsePtDate('30-06-2024'), rate: 11.50 },
     { start: parsePtDate('01-07-2024'), end: parsePtDate('31-12-2024'), rate: 11.25 },
     { start: parsePtDate('01-01-2025'), end: parsePtDate('30-06-2025'), rate: 10.15 },
-    { start: parsePtDate('01-07-2025'), end: null, rate: 9.15 },
+    { start: parsePtDate('01-07-2025'), end: parsePtDate('31-12-2025'), rate: 9.15 },
   ],
   [InterestType.COMMERCIAL_5]: [
     { start: parsePtDate('01-10-2004'), end: parsePtDate('31-12-2004'), rate: 9.01 },
@@ -133,15 +131,14 @@ export const INTEREST_RATES: Record<InterestType, InterestRate[]> = {
     { start: parsePtDate('01-07-2013'), end: parsePtDate('31-12-2013'), rate: 8.50 },
     { start: parsePtDate('01-01-2014'), end: parsePtDate('30-06-2014'), rate: 8.25 },
     { start: parsePtDate('01-07-2014'), end: parsePtDate('31-12-2014'), rate: 8.15 },
-    { start: parsePtDate('01-01-2015'), end: parsePtDate('31-12-2015'), rate: 8.05 },
-    { start: parsePtDate('01-01-2016'), end: parsePtDate('30-06-2016'), rate: 8.05 },
+    { start: parsePtDate('01-01-2015'), end: parsePtDate('30-06-2016'), rate: 8.05 },
     { start: parsePtDate('01-07-2016'), end: parsePtDate('31-12-2022'), rate: 8.00 },
     { start: parsePtDate('01-01-2023'), end: parsePtDate('30-06-2023'), rate: 10.50 },
     { start: parsePtDate('01-07-2023'), end: parsePtDate('31-12-2023'), rate: 12.00 },
     { start: parsePtDate('01-01-2024'), end: parsePtDate('30-06-2024'), rate: 12.50 },
     { start: parsePtDate('01-07-2024'), end: parsePtDate('31-12-2024'), rate: 12.25 },
     { start: parsePtDate('01-01-2025'), end: parsePtDate('30-06-2025'), rate: 11.15 },
-    { start: parsePtDate('01-07-2025'), end: null, rate: 10.15 },
+    { start: parsePtDate('01-07-2025'), end: parsePtDate('31-12-2025'), rate: 10.15 },
   ],
   [InterestType.CIVIL]: [
     { start: parsePtDate('01-01-1999'), end: parsePtDate('16-04-1999'), rate: 10.00 },
@@ -163,6 +160,6 @@ export const INTEREST_RATES: Record<InterestType, InterestRate[]> = {
     { start: parsePtDate('01-01-2022'), end: parsePtDate('31-12-2022'), rate: 4.510 },
     { start: parsePtDate('01-01-2023'), end: parsePtDate('31-12-2023'), rate: 5.997 },
     { start: parsePtDate('01-01-2024'), end: parsePtDate('31-12-2024'), rate: 8.876 },
-    { start: parsePtDate('01-01-2025'), end: null, rate: 8.309 },
+    { start: parsePtDate('01-01-2025'), end: parsePtDate('31-12-2025'), rate: 8.309 },
   ],
 };
